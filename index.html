@@ -8,7 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -31,7 +30,6 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-search.js"></script>
         <script src="data/do_25aug22_2.js"></script>
         <script src="data/do_21july22_3.js"></script>
         <script src="data/do_14jun22_4.js"></script>
@@ -45,11 +43,7 @@
         <script src="data/ph_14jun22_12.js"></script>
         <script src="data/ph_07jun22_13.js"></script>
         <script src="data/do_03may21_14.js"></script>
-        <script src="data/ph_23apr22_15.js"></script>
-        <script src="data/ph_19mar22_16.js"></script>
-        <script src="data/ph_13feb22_17.js"></script>
-        <script src="data/ph_03may21_18.js"></script>
-        <script src="data/ph_17apr21_19.js"></script>
+        <script src="data/_16.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -1007,7 +1001,16 @@
         });
         bounds_group.addLayer(layer_do_03may21_14);
         map.addLayer(layer_do_03may21_14);
-        function pop_ph_23apr22_15(feature, layer) {
+        map.createPane('pane_do_03may21_15');
+        map.getPane('pane_do_03may21_15').style.zIndex = 415;
+        var img_do_03may21_15 = 'data/do_03may21_15.png';
+        var img_bounds_do_03may21_15 = [[19.143828439072283,99.85380269223037],[19.201952914305647,99.91459431487233]];
+        var layer_do_03may21_15 = new L.imageOverlay(img_do_03may21_15,
+                                              img_bounds_do_03may21_15,
+                                              {pane: 'pane_do_03may21_15'});
+        bounds_group.addLayer(layer_do_03may21_15);
+        map.addLayer(layer_do_03may21_15);
+        function pop__16(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -1018,375 +1021,67 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">ID</th>\
-                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Name</th>\
+                        <td>' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">GRIDCODE</th>\
-                        <td>' + (feature.properties['GRIDCODE'] !== null ? autolinker.link(feature.properties['GRIDCODE'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['E'] !== null ? autolinker.link(feature.properties['E'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">details</th>\
-                        <td>' + (feature.properties['details'] !== null ? autolinker.link(feature.properties['details'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['N'] !== null ? autolinker.link(feature.properties['N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Name_Area</th>\
+                        <td>' + (feature.properties['Name_Area'] !== null ? autolinker.link(feature.properties['Name_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ph_23apr22_15_0(feature) {
-            switch(String(feature.properties['details'])) {
-                case 'ไม่เหมาะสม':
-                    return {
-                pane: 'pane_ph_23apr22_15',
+        function style__16_0() {
+            return {
+                pane: 'pane__16',
+                radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
+                fillColor: 'rgba(0,145,255,1.0)',
                 interactive: true,
-            }
-                    break;
-                case 'เหมาะสม':
-                    return {
-                pane: 'pane_ph_23apr22_15',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(36,98,45,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_ph_23apr22_15');
-        map.getPane('pane_ph_23apr22_15').style.zIndex = 415;
-        map.getPane('pane_ph_23apr22_15').style['mix-blend-mode'] = 'normal';
-        var layer_ph_23apr22_15 = new L.geoJson(json_ph_23apr22_15, {
+        map.createPane('pane__16');
+        map.getPane('pane__16').style.zIndex = 416;
+        map.getPane('pane__16').style['mix-blend-mode'] = 'normal';
+        var layer__16 = new L.geoJson(json__16, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ph_23apr22_15',
-            layerName: 'layer_ph_23apr22_15',
-            pane: 'pane_ph_23apr22_15',
-            onEachFeature: pop_ph_23apr22_15,
-            style: style_ph_23apr22_15_0,
+            dataVar: 'json__16',
+            layerName: 'layer__16',
+            pane: 'pane__16',
+            onEachFeature: pop__16,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__16_0(feature));
+            },
         });
-        bounds_group.addLayer(layer_ph_23apr22_15);
-        map.addLayer(layer_ph_23apr22_15);
-        function pop_ph_19mar22_16(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">ID</th>\
-                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">GRIDCODE</th>\
-                        <td>' + (feature.properties['GRIDCODE'] !== null ? autolinker.link(feature.properties['GRIDCODE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">details</th>\
-                        <td>' + (feature.properties['details'] !== null ? autolinker.link(feature.properties['details'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_ph_19mar22_16_0(feature) {
-            switch(String(feature.properties['details'])) {
-                case 'ไม่เหมาะสม':
-                    return {
-                pane: 'pane_ph_19mar22_16',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'เหมาะสม':
-                    return {
-                pane: 'pane_ph_19mar22_16',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(36,98,45,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_ph_19mar22_16');
-        map.getPane('pane_ph_19mar22_16').style.zIndex = 416;
-        map.getPane('pane_ph_19mar22_16').style['mix-blend-mode'] = 'normal';
-        var layer_ph_19mar22_16 = new L.geoJson(json_ph_19mar22_16, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_ph_19mar22_16',
-            layerName: 'layer_ph_19mar22_16',
-            pane: 'pane_ph_19mar22_16',
-            onEachFeature: pop_ph_19mar22_16,
-            style: style_ph_19mar22_16_0,
-        });
-        bounds_group.addLayer(layer_ph_19mar22_16);
-        map.addLayer(layer_ph_19mar22_16);
-        function pop_ph_13feb22_17(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">ID</th>\
-                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">GRIDCODE</th>\
-                        <td>' + (feature.properties['GRIDCODE'] !== null ? autolinker.link(feature.properties['GRIDCODE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">details</th>\
-                        <td>' + (feature.properties['details'] !== null ? autolinker.link(feature.properties['details'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_ph_13feb22_17_0(feature) {
-            switch(String(feature.properties['details'])) {
-                case 'ไม่เหมาะสม':
-                    return {
-                pane: 'pane_ph_13feb22_17',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'เหมาะสม':
-                    return {
-                pane: 'pane_ph_13feb22_17',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(36,98,45,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_ph_13feb22_17');
-        map.getPane('pane_ph_13feb22_17').style.zIndex = 417;
-        map.getPane('pane_ph_13feb22_17').style['mix-blend-mode'] = 'normal';
-        var layer_ph_13feb22_17 = new L.geoJson(json_ph_13feb22_17, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_ph_13feb22_17',
-            layerName: 'layer_ph_13feb22_17',
-            pane: 'pane_ph_13feb22_17',
-            onEachFeature: pop_ph_13feb22_17,
-            style: style_ph_13feb22_17_0,
-        });
-        bounds_group.addLayer(layer_ph_13feb22_17);
-        map.addLayer(layer_ph_13feb22_17);
-        function pop_ph_03may21_18(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">ID</th>\
-                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">GRIDCODE</th>\
-                        <td>' + (feature.properties['GRIDCODE'] !== null ? autolinker.link(feature.properties['GRIDCODE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">details</th>\
-                        <td>' + (feature.properties['details'] !== null ? autolinker.link(feature.properties['details'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_ph_03may21_18_0(feature) {
-            switch(String(feature.properties['details'])) {
-                case 'ไม่เหมาะสม':
-                    return {
-                pane: 'pane_ph_03may21_18',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'เหมาะสม':
-                    return {
-                pane: 'pane_ph_03may21_18',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(36,98,45,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_ph_03may21_18');
-        map.getPane('pane_ph_03may21_18').style.zIndex = 418;
-        map.getPane('pane_ph_03may21_18').style['mix-blend-mode'] = 'normal';
-        var layer_ph_03may21_18 = new L.geoJson(json_ph_03may21_18, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_ph_03may21_18',
-            layerName: 'layer_ph_03may21_18',
-            pane: 'pane_ph_03may21_18',
-            onEachFeature: pop_ph_03may21_18,
-            style: style_ph_03may21_18_0,
-        });
-        bounds_group.addLayer(layer_ph_03may21_18);
-        map.addLayer(layer_ph_03may21_18);
-        function pop_ph_17apr21_19(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">ID</th>\
-                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">GRIDCODE</th>\
-                        <td>' + (feature.properties['GRIDCODE'] !== null ? autolinker.link(feature.properties['GRIDCODE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">details</th>\
-                        <td>' + (feature.properties['details'] !== null ? autolinker.link(feature.properties['details'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_ph_17apr21_19_0(feature) {
-            switch(String(feature.properties['details'])) {
-                case 'ไม่เหมาะสม':
-                    return {
-                pane: 'pane_ph_17apr21_19',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'เหมาะสม':
-                    return {
-                pane: 'pane_ph_17apr21_19',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(36,98,45,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_ph_17apr21_19');
-        map.getPane('pane_ph_17apr21_19').style.zIndex = 419;
-        map.getPane('pane_ph_17apr21_19').style['mix-blend-mode'] = 'normal';
-        var layer_ph_17apr21_19 = new L.geoJson(json_ph_17apr21_19, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_ph_17apr21_19',
-            layerName: 'layer_ph_17apr21_19',
-            pane: 'pane_ph_17apr21_19',
-            onEachFeature: pop_ph_17apr21_19,
-            style: style_ph_17apr21_19_0,
-        });
-        bounds_group.addLayer(layer_ph_17apr21_19);
-        map.addLayer(layer_ph_17apr21_19);
+        bounds_group.addLayer(layer__16);
+        map.addLayer(layer__16);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'ph_17apr21<br /><table><tr><td style="text-align: center;"><img src="legend/ph_17apr21_19_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_17apr21_19_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_17apr21_19,'ph_03may21<br /><table><tr><td style="text-align: center;"><img src="legend/ph_03may21_18_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_03may21_18_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_03may21_18,'ph_13feb22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_13feb22_17_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_13feb22_17_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_13feb22_17,'ph_19mar22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_19mar22_16_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_19mar22_16_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_19mar22_16,'ph_23apr22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_23apr22_15_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_23apr22_15_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_23apr22_15,'do_03may21<br /><table><tr><td style="text-align: center;"><img src="legend/do_03may21_14_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_03may21_14_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_03may21_14,'ph_07jun22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_07jun22_13_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_07jun22_13_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_07jun22_13,'ph_14jun22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_14jun22_12_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_14jun22_12_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_14jun22_12,'ph_21july22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_21july22_11_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_21july22_11_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_21july22_11,'ph_25aug22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_25aug22_10_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_25aug22_10_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_25aug22_10,'do_13feb22<br /><table><tr><td style="text-align: center;"><img src="legend/do_13feb22_9_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_13feb22_9,'do_19mar22<br /><table><tr><td style="text-align: center;"><img src="legend/do_19mar22_8_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_19mar22_8_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_19mar22_8,'do_17apr22<br /><table><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ตำ2.png" /></td><td>ต่ำ</td></tr></table>': layer_do_17apr22_7,'do_23apr22<br /><table><tr><td style="text-align: center;"><img src="legend/do_23apr22_6_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_23apr22_6_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_23apr22_6,'do_07jun22<br /><table><tr><td style="text-align: center;"><img src="legend/do_07jun22_5_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_07jun22_5,'do_14jun22<br /><table><tr><td style="text-align: center;"><img src="legend/do_14jun22_4_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_14jun22_4,'do_21july22<br /><table><tr><td style="text-align: center;"><img src="legend/do_21july22_3_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_21july22_3,'do_25aug22<br /><table><tr><td style="text-align: center;"><img src="legend/do_25aug22_2_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_25aug22_2,"Google Satellite": layer_GoogleSatellite_1,"Google Maps": layer_GoogleMaps_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/_16.png" /> ตำแหน่งสำรวจ': layer__16,"do_03may21": layer_do_03may21_15,'do_03may21<br /><table><tr><td style="text-align: center;"><img src="legend/do_03may21_14_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_03may21_14_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_03may21_14,'ph_07jun22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_07jun22_13_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_07jun22_13_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_07jun22_13,'ph_14jun22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_14jun22_12_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_14jun22_12_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_14jun22_12,'ph_21july22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_21july22_11_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_21july22_11_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_21july22_11,'ph_25aug22<br /><table><tr><td style="text-align: center;"><img src="legend/ph_25aug22_10_ไมเหมาะสม0.png" /></td><td>ไม่เหมาะสม</td></tr><tr><td style="text-align: center;"><img src="legend/ph_25aug22_10_เหมาะสม1.png" /></td><td>เหมาะสม</td></tr></table>': layer_ph_25aug22_10,'do_13feb22<br /><table><tr><td style="text-align: center;"><img src="legend/do_13feb22_9_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_13feb22_9,'do_19mar22<br /><table><tr><td style="text-align: center;"><img src="legend/do_19mar22_8_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_19mar22_8_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_19mar22_8,'do_17apr22<br /><table><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr><tr><td style="text-align: center;"><img src="legend/do_17apr22_7_ตำ2.png" /></td><td>ต่ำ</td></tr></table>': layer_do_17apr22_7,'do_23apr22<br /><table><tr><td style="text-align: center;"><img src="legend/do_23apr22_6_ด0.png" /></td><td>ดี</td></tr><tr><td style="text-align: center;"><img src="legend/do_23apr22_6_ปานกลาง1.png" /></td><td>ปานกลาง</td></tr></table>': layer_do_23apr22_6,'do_07jun22<br /><table><tr><td style="text-align: center;"><img src="legend/do_07jun22_5_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_07jun22_5,'do_14jun22<br /><table><tr><td style="text-align: center;"><img src="legend/do_14jun22_4_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_14jun22_4,'do_21july22<br /><table><tr><td style="text-align: center;"><img src="legend/do_21july22_3_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_21july22_3,'do_25aug22<br /><table><tr><td style="text-align: center;"><img src="legend/do_25aug22_2_ด0.png" /></td><td>ดี</td></tr></table>': layer_do_25aug22_2,"Google Satellite": layer_GoogleSatellite_1,"Google Maps": layer_GoogleMaps_0,}).addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: layer_ph_17apr21_19,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'details'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
         </script>
     </body>
 </html>
